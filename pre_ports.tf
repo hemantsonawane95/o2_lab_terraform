@@ -133,3 +133,50 @@ EOF
     subnet_id = openstack_networking_subnet_v2.slot5b.id
   }
 }
+
+resource "openstack_networking_port_v2" "pre_slot5c_port" {
+  name           = "pre_slot5c_port"
+  network_id     = openstack_networking_network_v2.slot5c.id
+  admin_state_up = "true"
+
+  binding {
+    vnic_type = "direct"
+    profile   = <<EOF
+{
+  "pci_slot": "0000:1a:02.1",
+  "physical_network": "slot5c",
+  "pci_vendor_info": "8086:2018"
+}
+EOF
+  }
+
+  port_security_enabled = "false"
+
+  fixed_ip {
+    subnet_id = openstack_networking_subnet_v2.slot5c.id
+  }
+}
+
+
+resource "openstack_networking_port_v2" "pre_slot5d_port" {
+  name           = "pre_slot5d_port"
+  network_id     = openstack_networking_network_v2.slot5d.id
+  admin_state_up = "true"
+
+  binding {
+    vnic_type = "direct"
+    profile   = <<EOF
+{
+  "pci_slot": "0000:1a:06.1",
+  "physical_network": "slot5d",
+  "pci_vendor_info": "8086:2018"
+}
+EOF
+  }
+
+  port_security_enabled = "false"
+
+  fixed_ip {
+    subnet_id = openstack_networking_subnet_v2.slot5d.id
+  }
+}
