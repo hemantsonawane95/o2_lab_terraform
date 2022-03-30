@@ -100,8 +100,9 @@ resource "openstack_networking_network_v2" "slot5a" {
   admin_state_up = "true"
 
   segments {
-    network_type     = "flat"
+    network_type     = "vlan"
     physical_network = "slot5a"
+    segmentation_id = "1834"
   }
 }
 
@@ -123,8 +124,9 @@ resource "openstack_networking_network_v2" "slot5b" {
   admin_state_up = "true"
 
   segments {
-    network_type     = "flat"
+    network_type     = "vlan"
     physical_network = "slot5b"
+    segmentation_id = "1839"
   }
 }
 
