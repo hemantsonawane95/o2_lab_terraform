@@ -30,7 +30,7 @@ resource "openstack_networking_port_v2" "pre_slot3b_port" {
     vnic_type = "direct"
     profile   = <<EOF
 {
-  "pci_slot": "0000:5e:00.4",
+  "pci_slot": "0000:5e:00.6",
   "physical_network": "slot3b",
   "pci_vendor_info": "15b3:1018"
 }
@@ -76,7 +76,7 @@ resource "openstack_networking_port_v2" "pre_slot4b_port" {
     vnic_type = "direct"
     profile   = <<EOF
 {
-  "pci_slot": "0000:86:00.4",
+  "pci_slot": "0000:86:00.6",
   "physical_network": "slot4b",
   "pci_vendor_info": "15b3:1018"
 }
@@ -89,9 +89,13 @@ EOF
     subnet_id = openstack_networking_subnet_v2.slot4b.id
   }
 }
-resource "openstack_networking_port_v2" "pre_slot5a_port" {
-  name           = "pre_slot5a_port"
-  network_id     = openstack_networking_network_v2.slot5a.id
+
+
+
+
+resource "openstack_networking_port_v2" "pre_slot5a_vlan1834_port1" {
+  name           = "pre_slot5a_vlan1834_port1"
+  network_id     = openstack_networking_network_v2.slot5a_vlan1834.id
   admin_state_up = "true"
 
   binding {
@@ -108,12 +112,13 @@ EOF
   port_security_enabled = "false"
 
   fixed_ip {
-    subnet_id = openstack_networking_subnet_v2.slot5a.id
+    subnet_id = openstack_networking_subnet_v2.slot5a_vlan1834.id
   }
 }
-resource "openstack_networking_port_v2" "pre_slot5b_port" {
-  name           = "pre_slot5b_port"
-  network_id     = openstack_networking_network_v2.slot5a.id
+
+resource "openstack_networking_port_v2" "pre_slot5a_vlan1834_port2" {
+  name           = "pre_slot5a_vlan1834_port2"
+  network_id     = openstack_networking_network_v2.slot5a_vlan1834.id
   admin_state_up = "true"
 
   binding {
@@ -130,13 +135,13 @@ EOF
   port_security_enabled = "false"
 
   fixed_ip {
-    subnet_id = openstack_networking_subnet_v2.slot5a.id
+    subnet_id = openstack_networking_subnet_v2.slot5a_vlan1834.id
   }
 }
 
-resource "openstack_networking_port_v2" "pre_slot5c_port" {
-  name           = "pre_slot5c_port"
-  network_id     = openstack_networking_network_v2.slot5a.id
+resource "openstack_networking_port_v2" "pre_slot5a_vlan1835_port1" {
+  name           = "pre_slot5a_vlan1835_port1"
+  network_id     = openstack_networking_network_v2.slot5a_vlan1835.id
   admin_state_up = "true"
 
   binding {
@@ -153,13 +158,13 @@ EOF
   port_security_enabled = "false"
 
   fixed_ip {
-    subnet_id = openstack_networking_subnet_v2.slot5a.id
+    subnet_id = openstack_networking_subnet_v2.slot5a_vlan1835.id
   }
 }
 
-resource "openstack_networking_port_v2" "pre_slot5d_port" {
-  name           = "pre_slot5d_port"
-  network_id     = openstack_networking_network_v2.slot5a.id
+resource "openstack_networking_port_v2" "pre_slot5a_vlan1835_port2" {
+  name           = "pre_slot5a_vlan1835_port2"
+  network_id     = openstack_networking_network_v2.slot5a_vlan1835.id
   admin_state_up = "true"
 
   binding {
@@ -176,13 +181,13 @@ EOF
   port_security_enabled = "false"
 
   fixed_ip {
-    subnet_id = openstack_networking_subnet_v2.slot5a.id
+    subnet_id = openstack_networking_subnet_v2.slot5a_vlan1835.id
   }
 }
 
-resource "openstack_networking_port_v2" "pre_slot5e_port" {
-  name           = "pre_slot5e_port"
-  network_id     = openstack_networking_network_v2.slot5b.id
+resource "openstack_networking_port_v2" "pre_slot5b_vlan1839_port1" {
+  name           = "pre_slot5b_vlan1839_port1"
+  network_id     = openstack_networking_network_v2.slot5b_vlan1839.id
   admin_state_up = "true"
 
   binding {
@@ -199,13 +204,13 @@ EOF
   port_security_enabled = "false"
 
   fixed_ip {
-    subnet_id = openstack_networking_subnet_v2.slot5b.id
+    subnet_id = openstack_networking_subnet_v2.slot5b_vlan1839.id
   }
 }
 
-resource "openstack_networking_port_v2" "pre_slot5f_port" {
-  name           = "pre_slot5f_port"
-  network_id     = openstack_networking_network_v2.slot5b.id
+resource "openstack_networking_port_v2" "pre_slot5b_vlan1839_port2" {
+  name           = "pre_slot5b_vlan1839_port2"
+  network_id     = openstack_networking_network_v2.slot5b_vlan1839.id
   admin_state_up = "true"
 
   binding {
@@ -222,13 +227,13 @@ EOF
   port_security_enabled = "false"
 
   fixed_ip {
-    subnet_id = openstack_networking_subnet_v2.slot5b.id
+    subnet_id = openstack_networking_subnet_v2.slot5b_vlan1839.id
   }
 }
 
-resource "openstack_networking_port_v2" "pre_slot5g_port" {
-  name           = "pre_slot5g_port"
-  network_id     = openstack_networking_network_v2.slot5b.id
+resource "openstack_networking_port_v2" "pre_slot5b_vlan1840_port1" {
+  name           = "pre_slot5b_vlan1840_port1"
+  network_id     = openstack_networking_network_v2.slot5b_vlan1840.id
   admin_state_up = "true"
 
   binding {
@@ -245,13 +250,13 @@ EOF
   port_security_enabled = "false"
 
   fixed_ip {
-    subnet_id = openstack_networking_subnet_v2.slot5b.id
+    subnet_id = openstack_networking_subnet_v2.slot5b_vlan1840.id
   }
 }
 
-resource "openstack_networking_port_v2" "pre_slot5h_port" {
-  name           = "pre_slot5h_port"
-  network_id     = openstack_networking_network_v2.slot5b.id
+resource "openstack_networking_port_v2" "pre_slot5b_vlan1840_port2" {
+  name           = "pre_slot5b_vlan1840_port2"
+  network_id     = openstack_networking_network_v2.slot5b_vlan1840.id
   admin_state_up = "true"
 
   binding {
@@ -268,6 +273,6 @@ EOF
   port_security_enabled = "false"
 
   fixed_ip {
-    subnet_id = openstack_networking_subnet_v2.slot5b.id
+    subnet_id = openstack_networking_subnet_v2.slot5b_vlan1840.id
   }
 }

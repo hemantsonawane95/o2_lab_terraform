@@ -95,8 +95,10 @@ resource "openstack_networking_subnet_v2" "slot4b" {
     end   = "10.6.1.100"
   }
 }
-resource "openstack_networking_network_v2" "slot5a" {
-  name           = "slot5a"
+
+
+resource "openstack_networking_network_v2" "slot5a_vlan1834" {
+  name           = "slot5a_vlan1834"
   admin_state_up = "true"
 
   segments {
@@ -106,21 +108,40 @@ resource "openstack_networking_network_v2" "slot5a" {
   }
 }
 
-resource "openstack_networking_subnet_v2" "slot5a" {
-  name        = "slot5a"
-  network_id  = openstack_networking_network_v2.slot5a.id
-  cidr        = "10.6.0.0/22"
+resource "openstack_networking_subnet_v2" "slot5a_vlan1834" {
+  name        = "slot5a_vlan1834"
+  network_id  = openstack_networking_network_v2.slot5a_vlan1834.id
+  cidr        = "10.41.140.160/27"
   ip_version  = 4
-  gateway_ip  = "10.6.0.1"
+  gateway_ip  = "10.41.140.161"
   enable_dhcp = "false"
+}
 
-  allocation_pool {
-    start = "10.6.0.201"
-    end   = "10.6.1.100"
+resource "openstack_networking_network_v2" "slot5a_vlan1835" {
+  name           = "slot5a_vlan1835"
+  admin_state_up = "true"
+
+  segments {
+    network_type     = "vlan"
+    physical_network = "slot5a"
+    segmentation_id = "1835"
   }
 }
-resource "openstack_networking_network_v2" "slot5b" {
-  name           = "slot5b"
+
+resource "openstack_networking_subnet_v2" "slot5a_vlan1835" {
+  name        = "slot5a_vlan1835"
+  network_id  = openstack_networking_network_v2.slot5a_vlan1835.id
+  cidr        = "10.41.140.192/27"
+  ip_version  = 4
+  gateway_ip  = "10.41.140.193"
+  enable_dhcp = "false"
+}
+
+
+
+
+resource "openstack_networking_network_v2" "slot5b_vlan1839" {
+  name           = "slot5b_vlan1839"
   admin_state_up = "true"
 
   segments {
@@ -130,16 +151,33 @@ resource "openstack_networking_network_v2" "slot5b" {
   }
 }
 
-resource "openstack_networking_subnet_v2" "slot5b" {
-  name        = "slot5b"
-  network_id  = openstack_networking_network_v2.slot5b.id
-  cidr        = "10.6.0.0/22"
+resource "openstack_networking_subnet_v2" "slot5b_vlan1839" {
+  name        = "slot5b_vlan1839"
+  network_id  = openstack_networking_network_v2.slot5b_vlan1839.id
+  cidr        = "10.41.140.224/28"
   ip_version  = 4
-  gateway_ip  = "10.6.0.1"
   enable_dhcp = "false"
+  no_gateway = "true"
 
-  allocation_pool {
-    start = "10.6.0.201"
-    end   = "10.6.1.100"
+}
+
+
+resource "openstack_networking_network_v2" "slot5b_vlan1840" {
+  name           = "slot5b_vlan1840"
+  admin_state_up = "true"
+
+  segments {
+    network_type     = "vlan"
+    physical_network = "slot5b"
+    segmentation_id = "1840"
   }
+}
+
+resource "openstack_networking_subnet_v2" "slot5b_vlan1840" {
+  name        = "slot5b_vlan1840"
+  network_id  = openstack_networking_network_v2.slot5b_vlan1840.id
+  cidr        = "10.41.140.240/28"
+  ip_version  = 4
+  enable_dhcp = "false"
+  no_gateway = "true"
 }
